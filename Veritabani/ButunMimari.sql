@@ -9,13 +9,19 @@ CREATE TABLE Kullanicilar (
     ad_soyad VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     sifre_hash VARCHAR(255) NOT NULL,
+    telefon VARCHAR(15),
     rol_id INT NOT NULL,
     kayit_tarihi DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (rol_id) REFERENCES Rol(rol_id)
+
+     CONSTRAINT chk_telefon
+        CHECK (telefon IS NULL OR telefon REGEXP '^[0-9]{10,15}$')
+        
+	 CONSTRAINT chk_email_format
+        CHECK (email LIKE '%@%.%')
+
 ) ENGINE=InnoDB;
-ALTER TABLE Kullanicilar
-ADD CONSTRAINT chk_telefon
-CHECK (telefon REGEXP '^[0-9]{10,15}$');
+
 
 -- MARKA
 CREATE TABLE Marka (
