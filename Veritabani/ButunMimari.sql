@@ -1,3 +1,7 @@
+CREATE DATABASE AracKiralama;
+USE AracKiralama;
+
+
 CREATE TABLE Rol (
     rol_id INT AUTO_INCREMENT PRIMARY KEY,
     rol_adi VARCHAR(50) NOT NULL UNIQUE
@@ -12,14 +16,13 @@ CREATE TABLE Kullanicilar (
     telefon VARCHAR(15),
     rol_id INT NOT NULL,
     kayit_tarihi DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (rol_id) REFERENCES Rol(rol_id)
-
-     CONSTRAINT chk_telefon
-        CHECK (telefon IS NULL OR telefon REGEXP '^[0-9]{10,15}$')
+    FOREIGN KEY (rol_id) REFERENCES Rol(rol_id),
+    
+    CONSTRAINT chk_telefon 
+        CHECK (telefon IS NULL OR telefon REGEXP '^[0-9]{10,15}$'), 
         
-	 CONSTRAINT chk_email_format
+    CONSTRAINT chk_email_format 
         CHECK (email LIKE '%@%.%')
-
 ) ENGINE=InnoDB;
 
 
