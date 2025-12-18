@@ -1,0 +1,15 @@
+RDMBS (MsSQL)
+Veritabanı tasarımı:
+En az 6 adet varlık kullanımı (10 puan)
+Uygun veri modelinin belirlenmesi ve veri tabanı oluşturma (10 puan)
+Sorgu performansı için kullanılan stratejiler (10 puan)
+Veri ambarı oluşturma:
+ETL adımlarını takip edecek şekilde veri ambarı oluşturma (10 puan)
+En az 5 adet farklı türde SSIS package oluşturma (10 puan)
+Oluşturulan veri ambarını temel özellikleri barındırması (10 puan)
+OLAP Cube Oluşturma:
+Multidimenisonal SSAS projesi oluşturma (10 puan)
+Küp içerisinde en az 5 adet measure tanımlama (10 puan)
+Küp içerisinde en az 5 adet measure barındırma (10 puan)
+MsSQL Server Analysis servisler kullanarak küp analizi (10 puan)
++OLAP kübünü bir ön yüze bağlayarak web projesi oluşturma (10 puan)
