@@ -33,7 +33,7 @@ def test_soa_api():
         if response.status_code == 200:
             result = response.json()
             if result.get("success"):
-                print("✅ Test Başarılı!")
+                print("Test Başarılı!")
                 print("-" * 40)
                 print(f"Araç Fiyat Tahmini (TL):  {result['tahmin_tl']} ₺")
                 print(f"Araç Fiyat Tahmini (EUR): {result['tahmin_eur']} €")
@@ -41,15 +41,15 @@ def test_soa_api():
                 print(f"Bilgi: {result['kur_bilgisi']}")
                 print("-" * 40)
             else:
-                print(f"❌ API Hatası: {result.get('error')}")
+                print(f"API Hatası: {result.get('error')}")
         else:
-            print(f"❌ Sunucu Hatası! Durum Kodu: {response.status_code}")
+            print(f"Sunucu Hatası! Durum Kodu: {response.status_code}")
             print(f"Yanıt: {response.text}")
             
     except requests.exceptions.ConnectionError:
-        print("❌ Hata: Node.js sunucusuna ulaşılamadı. Sunucunun (localhost:3000) açık olduğundan emin olun.")
+        print("Hata: Node.js sunucusuna ulaşılamadı. Sunucunun (localhost:3000) açık olduğundan emin olun.")
     except Exception as e:
-        print(f"❌ Beklenmedik bir hata oluştu: {e}")
+        print(f"Beklenmedik bir hata oluştu: {e}")
 
 if __name__ == "__main__":
     test_soa_api()

@@ -9,7 +9,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// gRPC İstemci Yapılandırması (keepCase hatası düzeltildi)
 const protoPath = path.join(__dirname, '..', 'gRPC', 'predict.proto');
 const packageDefinition = protoLoader.loadSync(protoPath, {
     keepCase: true,
