@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+service PricePrediction {
+  rpc PredictPrice (PredictionRequest) returns (PredictionResponse) {}
+}
+
+message PredictionRequest {
+  int32 marka = 1;
+  int32 seri = 2;
+  int32 model = 3;
+  int32 yil = 4;
+  int32 kilometre = 5;
+  int32 vites_tipi = 6;
+  int32 yakit_tipi = 7;
+  int32 motor_hacmi = 8;
+  int32 motor_gucu = 9;
+  int32 hasar_durumu = 10;
+}
+
+message PredictionResponse {
+  float tahmin_edilen_fiyat = 1;
+}
