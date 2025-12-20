@@ -15,6 +15,9 @@ message PredictionRequest {
   int32 motor_hacmi = 8;
   int32 motor_gucu = 9;
   int32 hasar_durumu = 10;
+  int32 kasa_tipi = 11;  
+  int32 renk = 12;       
+  int32 cekis = 13;      
 }
 
 message PredictionResponse {
