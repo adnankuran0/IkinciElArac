@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Ortalama Araç Fiyatı";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>@ViewData["Title"]</h2>
+        <small class="text-muted">Tasarım (view-only) — sunucu kodu yok</small>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-5">
+            @await Html.PartialAsync("_FilterForm")
+        </div>
+
+        <div class="col-lg-7">
+            @await Html.PartialAsync("_ResultCard")
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <div class="card">
+            <div class="card-body text-muted">
+                Bu sayfa sadece görünüm (view) olarak tasarlanmıştır. Form submit işlemi için Controller ve model binding eklendiğinde sonuç burada dinamik olarak gösterilecektir.
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,16 +8,16 @@ url = "http://localhost:3000/api/predict"
 test_data = {
     "kullanici_id": 1,
     "arac_id": 1,
-    "marka_id": 5,        # Örn: Hyundai
-    "seri_id": 12,        # Örn: Accent Blue
-    "model_id": 45,       # Örn: 1.6 CRDI
+    "marka_id": 5,        
+    "seri_id": 12,        
+    "model_id": 45,       
     "yil": 2018,
     "kilometre": 150000,
-    "vites_tipi_id": 0,   # 0: Manuel
-    "yakit_tipi_id": 1,   # 1: Dizel
+    "vites_tipi_id": 0,   
+    "yakit_tipi_id": 1,   
     "motor_hacmi": 1582,
     "motor_gucu": 136,
-    "hasar_durumu": 0,    # 0: Orjinal/Hatasız
+    "hasar_durumu": 0,    
     "takasa_uygun": True,
     "kimden": "Galeriden"
 }

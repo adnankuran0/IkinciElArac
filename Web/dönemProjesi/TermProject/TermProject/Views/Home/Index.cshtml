@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Vitrin";
+}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="p-4 bg-light rounded">
+            <h1>Hoşgeldiniz</h1>
+            <p class="lead">En yeni ilanlar ve fırsatlar burada.</p>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3">
+    @* Örnek: Partial kullanımını gösterir; verilerle bağlandığında model listesini foreach ile dönün *@
+    <div class="col-md-3 col-sm-6">
+        @await Html.PartialAsync("_VehicleCardPartial", new { Id = 1, Title = "Renault Clio 2018", Subtitle = "Benzin • 75k km", Price = "₺ 450,000", ImageUrl = Url.Content("~/images/vehicle1.jpg") })
+    </div>
+    <div class="col-md-3 col-sm-6">
+        @await Html.PartialAsync("_VehicleCardPartial", new { Id = 2, Title = "Fiat Egea 2019", Subtitle = "Dizel • 60k km", Price = "₺ 520,000", ImageUrl = Url.Content("~/images/vehicle2.jpg") })
+    </div>
+    <div class="col-md-3 col-sm-6">
+        @await Html.PartialAsync("_VehicleCardPartial", new { Id = 3, Title = "BMW 3 Series", Subtitle = "Benzin • 120k km", Price = "₺ 1,200,000", ImageUrl = Url.Content("~/images/vehicle3.jpg") })
+    </div>
+    <div class="col-md-3 col-sm-6">
+        @await Html.PartialAsync("_VehicleCardPartial", new { Id = 4, Title = "Volkswagen Polo", Subtitle = "Benzin • 90k km", Price = "₺ 390,000", ImageUrl = Url.Content("~/images/vehicle4.jpg") })
+    </div>
+</div>

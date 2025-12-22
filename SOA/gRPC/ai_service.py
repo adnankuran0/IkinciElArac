@@ -5,7 +5,7 @@ import predict_pb2_grpc
 import joblib
 import numpy as np
 
-model = joblib.load('../MakineOgrenmesi/out/best_model.joblib')
+model = joblib.load('../../MakineOgrenmesi/out/best_model.joblib')
 
 class PricePredictionServicer(predict_pb2_grpc.PricePredictionServicer):
     def PredictPrice(self, request, context):

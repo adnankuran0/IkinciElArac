@@ -1,0 +1,283 @@
+﻿@* Partial: Ortalama fiyat tahmin formu (view-only, client-side ve API çağrısı test) *@
+<form id="priceForm" novalidate>
+    <div class="card shadow-sm">
+        <div class="card-header bg-white">
+            <strong>Fiyat Tahmin Formu</strong>
+        </div>
+        <div class="card-body">
+            <div class="mb-2">
+                <label class="form-label small">Marka</label>
+                <input id="make" class="form-control form-control-sm" placeholder="Örn: Renault, Ford" />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label small">Model</label>
+                <input id="model" class="form-control form-control-sm" placeholder="Örn: Clio, Focus" />
+            </div>
+
+            <div class="row">
+                <div class="col-6 mb-2">
+                    <label class="form-label small">Yıl</label>
+                    <input id="year" type="number" min="1980" max="@DateTime.Now.Year" value="@DateTime.Now.Year" class="form-control form-control-sm" />
+                </div>
+                <div class="col-6 mb-2">
+                    <label class="form-label small">Kilometre (km)</label>
+                    <input id="mileage" type="number" min="0" value="50000" class="form-control form-control-sm" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6 mb-2">
+                    <label class="form-label small">Yakıt</label>
+                    <select id="fuel" class="form-select form-select-sm">
+                        <option>Benzin</option>
+                        <option>Dizel</option>
+                        <option>Elektrik</option>
+                        <option>Hibrit</option>
+                        <option>GPL</option>
+                    </select>
+                </div>
+                <div class="col-6 mb-2">
+                    <label class="form-label small">Vites</label>
+                    <select id="transmission" class="form-select form-select-sm">
+                        <option>Manuel</option>
+                        <option>Otomatik</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label small">Motor Hacmi (cc)</label>
+                <input id="engine" type="number" min="600" value="1400" class="form-control form-control-sm" />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label small">Durum</label>
+                <select id="condition" class="form-select form-select-sm">
+                    <option value="1">Yeni</option>
+                    <option value="0.9">Çok İyi</option>
+                    <option value="0.8" selected>İyi</option>
+                    <option value="0.7">Orta</option>
+                    <option value="0.5">Hasarlı / Onarım Gerekiyor</option>
+                </select>
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label small">Bölge (şehir)</label>
+                <input id="region" class="form-control form-control-sm" placeholder="İstanbul, Ankara..." />
+            </div>
+
+            <div class="d-flex gap-2 mt-3">
+                <button type="button" class="btn btn-primary btn-sm" id="calcBtn">Hesapla</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="resetBtn">Sıfırla</button>
+                <button type="button" class="btn btn-outline-info btn-sm ms-auto" id="exampleBtn">Örnek Doldur</button>
+            </div>
+
+            <div class="mt-3">
+                <small class="text-muted">Tahmini sonuçlar sunucu veya lokal hesaplama ile gösterilir. Konsolda API isteği görünecektir.</small>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const apiUrl = 'http://localhost:3000/api/predict/';
+
+        function formatTRY(v) {
+            return v.toLocaleString('tr-TR', { style: 'currency', currency: 'TRY' });
+        }
+
+        function localCalculateAndRender(inputs) {
+            // Basit fallback hesaplama (örgün mantık korunuyor)
+            const age = Math.max(0, new Date().getFullYear() - (inputs.year || new Date().getFullYear()));
+            let base = 400000;
+            base -= age * 20000;
+            base -= Math.floor((inputs.mileage || 0) / 1000) * 500;
+            base += ((inputs.engine || 1400) - 1400) * 10;
+            if (inputs.fuel === 'Elektrik') base += 40000;
+            if (inputs.fuel === 'Hibrit') base += 20000;
+            if (inputs.transmission === 'Otomatik') base += 15000;
+            base = Math.max(20000, base);
+            const adjusted = Math.round(base * (inputs.conditionFactor || 0.8));
+            const lower = Math.round(adjusted * 0.9);
+            const upper = Math.round(adjusted * 1.1);
+
+            renderResult({ predicted: adjusted, lower, upper, summary: { age, mileage: inputs.mileage, engine: inputs.engine, fuel: inputs.fuel, transmission: inputs.transmission } });
+        }
+
+        function renderResult(result) {
+            const resultCard = document.getElementById('resultCard');
+            if (!resultCard) return;
+            resultCard.innerHTML = `
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title mb-2">Tahmini Ortalama Fiyat</h5>
+                        <h2 class="display-6 mb-1 text-primary">${formatTRY(result.predicted)}</h2>
+                        <div class="mb-2 text-muted">Tahmin aralığı: <strong>${formatTRY(result.lower)}</strong> — <strong>${formatTRY(result.upper)}</strong></div>
+                        <div class="mb-3">
+                            <small class="text-muted">Tahmin özeti:</small>
+                            <ul class="small mb-0">
+                                <li>Yaş etkisi: ${result.summary.age} yıl</li>
+                                <li>Kilometre: ${result.summary.mileage?.toLocaleString() ?? '—'} km</li>
+                                <li>Motor: ${result.summary.engine ?? '—'} cc</li>
+                                <li>Yakıt: ${result.summary.fuel ?? '—'}, Vites: ${result.summary.transmission ?? '—'}</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-primary" id="saveSample">Sonucu Kopyala</button>
+                            <a class="btn btn-sm btn-outline-secondary" href="/Vehicle?search=${encodeURIComponent(result.predicted)}">Benzer İlanları Ara</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const saveBtn = document.getElementById('saveSample');
+            if (saveBtn) {
+                saveBtn.addEventListener('click', function () {
+                    const text = `Tahmini fiyat: ${formatTRY(result.predicted)} (aralık: ${formatTRY(result.lower)} - ${formatTRY(result.upper)})`;
+                    navigator.clipboard?.writeText(text).then(function () {
+                        saveBtn.textContent = 'Kopyalandı';
+                        setTimeout(() => saveBtn.textContent = 'Sonucu Kopyala', 1500);
+                    }, () => {
+                        alert(text);
+                    });
+                });
+            }
+        }
+
+        async function callApi(inputs) {
+            console.info('API call payload:', inputs);
+            try {
+                const resp = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(inputs),
+                });
+
+                console.info('Fetch response status:', resp.status, resp.statusText);
+
+                // attempt to parse JSON (may fail)
+                const json = await resp.clone().json().catch(() => null);
+                console.info('Response JSON:', json);
+
+                if (!resp.ok) {
+                    console.warn('API returned non-OK status, falling back to local calculation.');
+                    return { ok: false, json };
+                }
+
+                // Expecting API to return something like { predictedPrice: number, lower: number, upper: number, summary: {...} }
+                // Adjust according to your API's response schema.
+                if (json && (json.predictedPrice || json.predicted)) {
+                    const predicted = json.predictedPrice ?? json.predicted;
+                    const lower = json.lower ?? Math.round(predicted * 0.9);
+                    const upper = json.upper ?? Math.round(predicted * 1.1);
+                    const summary = json.summary ?? {
+                        age: Math.max(0, new Date().getFullYear() - (inputs.year || new Date().getFullYear())),
+                        mileage: inputs.mileage,
+                        engine: inputs.engine,
+                        fuel: inputs.fuel,
+                        transmission: inputs.transmission
+                    };
+                    return { ok: true, data: { predicted, lower, upper, summary } };
+                }
+
+                // If response doesn't contain expected fields, return non-ok and json for inspection
+                return { ok: false, json };
+            }
+            catch (err) {
+                console.error('Fetch error:', err);
+                return { ok: false, error: err };
+            }
+        }
+
+        async function handleCalculate() {
+            const inputs = {
+                make: document.getElementById('make')?.value || null,
+                model: document.getElementById('model')?.value || null,
+                year: parseInt(document.getElementById('year')?.value) || null,
+                mileage: parseFloat(document.getElementById('mileage')?.value) || 0,
+                engine: parseInt(document.getElementById('engine')?.value) || null,
+                fuel: document.getElementById('fuel')?.value || null,
+                transmission: document.getElementById('transmission')?.value || null,
+                conditionFactor: parseFloat(document.getElementById('condition')?.value) || 0.8,
+                region: document.getElementById('region')?.value || null
+            };
+
+            // Show payload in console before sending
+            console.log('Sending payload to', apiUrl, inputs);
+
+            const apiResult = await callApi(inputs);
+
+            if (apiResult.ok && apiResult.data) {
+                console.log('Using API result to render:', apiResult.data);
+                renderResult({
+                    predicted: apiResult.data.predicted,
+                    lower: apiResult.data.lower,
+                    upper: apiResult.data.upper,
+                    summary: apiResult.data.summary
+                });
+            } else {
+                console.warn('API call failed or returned unexpected data, using local fallback.', apiResult);
+                localCalculateAndRender(inputs);
+            }
+        }
+
+        // bind buttons
+        const calcBtn = document.getElementById('calcBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const exampleBtn = document.getElementById('exampleBtn');
+
+        if (calcBtn) calcBtn.addEventListener('click', handleCalculate);
+
+        if (resetBtn) {
+            resetBtn.addEventListener('click', function () {
+                ['make','model','year','mileage','engine','region'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (!el) return;
+                    if (el.tagName === 'INPUT') {
+                        if (el.type === 'number') {
+                            if (id === 'year') el.value = new Date().getFullYear();
+                            else if (id === 'mileage') el.value = 50000;
+                            else if (id === 'engine') el.value = 1400;
+                            else el.value = '';
+                        } else el.value = '';
+                    } else if (el.tagName === 'SELECT') {
+                        el.selectedIndex = 0;
+                    }
+                });
+
+                const resultCard = document.getElementById('resultCard');
+                if (resultCard) resultCard.innerHTML = `<div class="card border-dashed"><div class="card-body text-muted">Sonuç burada görünecek. Formu doldurup "Hesapla"ya basın.</div></div>`;
+            });
+        }
+
+        if (exampleBtn) {
+            exampleBtn.addEventListener('click', function () {
+                const make = document.getElementById('make');
+                const model = document.getElementById('model');
+                const year = document.getElementById('year');
+                const mileage = document.getElementById('mileage');
+                const fuel = document.getElementById('fuel');
+                const transmission = document.getElementById('transmission');
+                const engine = document.getElementById('engine');
+
+                if (make) make.value = 'Renault';
+                if (model) model.value = 'Clio';
+                if (year) year.value = new Date().getFullYear() - 4;
+                if (mileage) mileage.value = 60000;
+                if (fuel) fuel.value = 'Benzin';
+                if (transmission) transmission.value = 'Manuel';
+                if (engine) engine.value = 1200;
+            });
+        }
+
+        // initial placeholder
+        document.addEventListener('DOMContentLoaded', function () {
+            const resultCard = document.getElementById('resultCard');
+            if (resultCard) {
+                resultCard.innerHTML = `<div class="card border-dashed"><div class="card-body text-muted">Sonuç burada görünecek. Formu doldurup "Hesapla"ya basın.</div></div>`;
+            }
+        });
+    });
+</script>

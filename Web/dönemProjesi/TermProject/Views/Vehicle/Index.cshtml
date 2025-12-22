@@ -1,0 +1,51 @@
+@{
+    ViewData["Title"] = "Ýlanlar";
+    // Query deðerini önce deðiþkene alýyoruz - Razor parser'ýn karmaþýk inline ifadelerle sorun çýkarmasýný engellemek için
+    var searchQuery = HttpContext?.Request?.Query["search"].ToString() ?? string.Empty;
+}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Ýlanlar</h2>
+    <div>
+        @if (User?.Identity?.IsAuthenticated == true)
+        {
+            <a class="btn btn-success" asp-controller="Vehicle" asp-action="Create">Ýlan Ver</a>
+        }
+        else
+        {
+            <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Login">Giriþ Yap</a>
+        }
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <form class="row g-2" asp-controller="Vehicle" asp-action="Index" method="get">
+            <div class="col-sm-6 col-md-4">
+                <input class="form-control" name="search" placeholder="Ýlanlarda ara..." value="@searchQuery" />
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-outline-secondary" type="submit">Ara</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@* Örnek responsive grid; gerçek veri baðlandýðýnda foreach ile model üzerinden dönün *@
+<div class="row g-3">
+    <div class="col-6 col-md-3">
+        @await Html.PartialAsync("_VehicleCardPartial", new { Id = 1, Title = "Renault Clio 2018", Subtitle = "Benzin • 75k km", Price = "? 450,000", ImageUrl = Url.Content("~/images/vehicle1.jpg") })
+    </div>
+    <div class="col-6 col-md-3">
+        @await Html.PartialAsync("_VehicleCardPartial", new { Id = 2, Title = "Fiat Egea 2019", Subtitle = "Dizel • 60k km", Price = "? 520,000", ImageUrl = Url.Content("~/images/vehicle2.jpg") })
+    </div>
+    <div class="col-6 col-md-3">
+        @await Html.PartialAsync("_VehicleCardPartial", new { Id = 3, Title = "BMW 3 Series", Subtitle = "Benzin • 120k km", Price = "? 1,200,000", ImageUrl = Url.Content("~/images/vehicle3.jpg") })
+    </div>
+    <div class="col-6 col-md-3">
+        @await Html.PartialAsync("_VehicleCardPartial", new { Id = 4, Title = "Volkswagen Polo", Subtitle = "Benzin • 90k km", Price = "? 390,000", ImageUrl = Url.Content("~/images/vehicle4.jpg") })
+    </div>
+</div>
+
+<div class="mt-4 text-center text-muted">
+    <small>Gerçek veriler baðlandýðýnda burasý sayfalanmýþ ilan listesi gösterecek.</small>
+</div>
