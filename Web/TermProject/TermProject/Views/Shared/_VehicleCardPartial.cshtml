@@ -1,0 +1,12 @@
+﻿@model dynamic
+<div class="card h-100">
+    <img src="@(Model?.ImageUrl ?? Url.Content("~/images/placeholder.png"))" class="card-img-top" alt="vehicle image" style="object-fit:cover; height:160px;">
+    <div class="card-body d-flex flex-column">
+        <h5 class="card-title mb-1">@((Model?.Title) ?? "Araç Başlığı")</h5>
+        <p class="text-muted mb-2 small">@((Model?.Subtitle) ?? "Model • Year • km")</p>
+        <div class="mt-auto d-flex justify-content-between align-items-center">
+            <span class="fw-bold text-primary">@((Model?.Price) ?? "₺ 0")</span>
+            <a asp-controller="Vehicle" asp-action="Details" asp-route-id="@(Model?.Id ?? 0)" class="btn btn-sm btn-outline-secondary">Detay</a>
+        </div>
+    </div>
+</div>

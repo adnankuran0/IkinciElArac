@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "İlanlarım";
+}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>İlanlarım</h3>
+    <a class="btn btn-outline-secondary" asp-controller="Profile" asp-action="Settings">Hesap Ayarları</a>
+</div>
+
+<p class="text-muted">Giriş yapan kullanıcının verdiği ilanlar burada listelenecek. Veritabanı bağlandıktan sonra model ile doldurulacaktır.</p>
+
+<div class="row g-3">
+    <div class="col-12 col-md-6 col-lg-4">
+        @await Html.PartialAsync("_VehicleCardPartial", new { Id = 101, Title = "Örnek İlan - Benim Aracım", Subtitle = "Benzin • 50k km", Price = "₺ 600,000", ImageUrl = Url.Content("~/images/vehicle1.jpg") })
+        <div class="mt-2 d-flex gap-2">
+            <a class="btn btn-sm btn-outline-primary" asp-controller="Vehicle" asp-action="Edit" asp-route-id="101">Düzenle</a>
+            <a class="btn btn-sm btn-outline-danger" asp-controller="Vehicle" asp-action="Delete" asp-route-id="101">Sil</a>
+        </div>
+    </div>
+</div>

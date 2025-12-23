@@ -5,29 +5,26 @@ import predict_pb2_grpc
 import joblib
 import numpy as np
 
-model = joblib.load('../MakineOgrenmesi/out/best_model.joblib')
+model = joblib.load('../../MakineOgrenmesi/out/best_model.joblib')
 
 class PricePredictionServicer(predict_pb2_grpc.PricePredictionServicer):
     def PredictPrice(self, request, context):
-        # Yıl bilgisinden Yas türetme (Model eğitimindeki gibi)
         yas = 2025 - request.yil
         
-        # EĞİTİMDEKİ TAM SIRA: 
-        # Marka, Seri, Model, Kilometre, Vites, Yakit, Kasa, Renk, Hacim, Guc, Cekis, Hasar, Yas
         input_data = np.array([[
-            request.marka,        # 1
-            request.seri,         # 2
-            request.model,        # 3
-            request.kilometre,    # 4
-            request.vites_tipi,   # 5
-            request.yakit_tipi,   # 6
-            request.kasa_tipi,    # 7
-            request.renk,         # 8
-            request.motor_hacmi,  # 9
-            request.motor_gucu,   # 10
-            request.cekis,        # 11
-            request.hasar_durumu, # 12
-            yas                   # 13
+            request.marka,        
+            request.seri,         
+            request.model,        
+            request.kilometre,    
+            request.vites_tipi,   
+            request.yakit_tipi,  
+            request.kasa_tipi, 
+            request.renk,        
+            request.motor_hacmi, 
+            request.motor_gucu, 
+            request.cekis,      
+            request.hasar_durumu, 
+            yas                   
         ]])
         
         prediction = model.predict(input_data)[0]

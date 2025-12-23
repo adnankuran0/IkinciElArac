@@ -1,0 +1,28 @@
+﻿@model dynamic
+<div class="d-flex align-items-center">
+    @if (Model?.IsAuthenticated == true)
+    {
+        <div class="dropdown">
+            <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle"></i> @Model.Username
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                <li><a class="dropdown-item" asp-controller="Profile" asp-action="MyListings">Profilim / İlanlarım</a></li>
+                <li><a class="dropdown-item" asp-controller="Profile" asp-action="Settings">Ayarlar</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                    <form asp-controller="Account" asp-action="Logout" method="post" class="px-3">
+                        <button type="submit" class="btn btn-link p-0">Çıkış</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div>
+            <a class="btn btn-outline-primary me-2" asp-controller="Account" asp-action="Login">Giriş Yap</a>
+            <a class="btn btn-primary" asp-controller="Account" asp-action="Register">Kayıt Ol</a>
+        </div>
+    }
+</div>

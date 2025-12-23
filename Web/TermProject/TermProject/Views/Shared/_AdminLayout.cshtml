@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admin - TermProject</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="d-flex">
+        <nav class="bg-light border-end" style="width:250px; min-height:100vh;">
+            <div class="p-3">
+                <h5>Admin Panel</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="ApproveListings">Onay Bekleyen İlanlar</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="UserManagement">Kullanıcı Yönetimi</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="flex-grow-1">
+            <header class="border-bottom bg-white p-3">
+                <div class="container-fluid d-flex justify-content-between">
+                    <h4 class="mb-0">@ViewData["Title"]</h4>
+                    <div>
+                        @await Component.InvokeAsync("UserMenu")
+                    </div>
+                </div>
+            </header>
+            <main class="p-4">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

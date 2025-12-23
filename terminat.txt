@@ -1,0 +1,32 @@
+cd C:\Users\Bedirhan\Documents\GitHub\OrtakProje\SOA\API
+node server.js
+
+
+
+cd C:\Users\Bedirhan\Documents\GitHub\OrtakProje\SOA\gRPC
+
+python ai_service.py
+
+
+
+api test 
+http://localhost:3000/api/predict/   postman 
+
+örnek 
+{
+  "kullanici_id": 1,
+  "arac_id": 14444,
+  "marka_id": 5,
+  "seri_id": 12,
+  "model_id": 45,
+  "yil": 2028,
+  "kilometre": 5000,
+  "vites_tipi_id": 0,
+  "yakit_tipi_id": 1,
+  "motor_hacmi": 1582,
+  "motor_gucu": 136,
+  "hasar_durumu": 0,
+  "takasa_uygun": true,
+  "kimden": "Galeriden"
+}
+
