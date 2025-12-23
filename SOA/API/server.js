@@ -34,7 +34,6 @@ app.post('/api/predict', async (req, res) => {
         motor_gucu: Number(req.body.motor_gucu),
         hasar_durumu: Number(req.body.hasar_durumu),
 
-        // test.py'den gelen ama daha önce kullanılmayan alanlar
         takasa_uygun: req.body.takasa_uygun ? 1 : 0,
         kimden: req.body.kimden === "Galeriden" ? 1 : 0
     };
