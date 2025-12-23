@@ -1,10 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\d\u00F6nemProjesi\\TermProject\\",
+  "WorkspaceRootPath": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\TermProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{10486A02-8C66-43B9-991A-B76921D63EAE}|TermProject\\TermProject.csproj|c:\\users\\adnan\\desktop\\ortakproje\\web\\d\u00F6nemprojesi\\termproject\\termproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10486A02-8C66-43B9-991A-B76921D63EAE}|TermProject\\TermProject.csproj|solutionrelative:termproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{10486A02-8C66-43B9-991A-B76921D63EAE}|TermProject\\TermProject.csproj|c:\\users\\adnan\\desktop\\ortakproje\\web\\termproject\\termproject\\views\\average\\_filterform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10486A02-8C66-43B9-991A-B76921D63EAE}|TermProject\\TermProject.csproj|solutionrelative:termproject\\views\\average\\_filterform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10486A02-8C66-43B9-991A-B76921D63EAE}|TermProject\\TermProject.csproj|c:\\users\\adnan\\desktop\\ortakproje\\web\\termproject\\termproject\\models\\vwilandetay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10486A02-8C66-43B9-991A-B76921D63EAE}|TermProject\\TermProject.csproj|solutionrelative:termproject\\models\\vwilandetay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10486A02-8C66-43B9-991A-B76921D63EAE}|TermProject\\TermProject.csproj|c:\\users\\adnan\\desktop\\ortakproje\\web\\termproject\\termproject\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10486A02-8C66-43B9-991A-B76921D63EAE}|TermProject\\TermProject.csproj|solutionrelative:termproject\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10486A02-8C66-43B9-991A-B76921D63EAE}|TermProject\\TermProject.csproj|c:\\users\\adnan\\desktop\\ortakproje\\web\\termproject\\termproject\\views\\average\\_resultcard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10486A02-8C66-43B9-991A-B76921D63EAE}|TermProject\\TermProject.csproj|solutionrelative:termproject\\views\\average\\_resultcard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10486A02-8C66-43B9-991A-B76921D63EAE}|TermProject\\TermProject.csproj|c:\\users\\adnan\\desktop\\ortakproje\\web\\termproject\\termproject\\views\\average\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10486A02-8C66-43B9-991A-B76921D63EAE}|TermProject\\TermProject.csproj|solutionrelative:termproject\\views\\average\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10486A02-8C66-43B9-991A-B76921D63EAE}|TermProject\\TermProject.csproj|c:\\users\\adnan\\desktop\\ortakproje\\web\\termproject\\termproject\\models\\seri.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10486A02-8C66-43B9-991A-B76921D63EAE}|TermProject\\TermProject.csproj|solutionrelative:termproject\\models\\seri.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10486A02-8C66-43B9-991A-B76921D63EAE}|TermProject\\TermProject.csproj|c:\\users\\adnan\\desktop\\ortakproje\\web\\termproject\\termproject\\models\\fiyattahmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10486A02-8C66-43B9-991A-B76921D63EAE}|TermProject\\TermProject.csproj|solutionrelative:termproject\\models\\fiyattahmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,15 +50,93 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\d\u00F6nemProjesi\\TermProject\\TermProject\\Program.cs",
-              "RelativeDocumentMoniker": "TermProject\\Program.cs",
-              "ToolTip": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\d\u00F6nemProjesi\\TermProject\\TermProject\\Program.cs",
-              "RelativeToolTip": "TermProject\\Program.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAqwA4AAAAFAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\TermProject\\TermProject\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "TermProject\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\TermProject\\TermProject\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "TermProject\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA5AQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-23T11:06:28.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Seri.cs",
+              "DocumentMoniker": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\TermProject\\TermProject\\Models\\Seri.cs",
+              "RelativeDocumentMoniker": "TermProject\\Models\\Seri.cs",
+              "ToolTip": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\TermProject\\TermProject\\Models\\Seri.cs",
+              "RelativeToolTip": "TermProject\\Models\\Seri.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-23T02:55:16.559Z",
+              "WhenOpened": "2025-12-23T10:36:28.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VwIlanDetay.cs",
+              "DocumentMoniker": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\TermProject\\TermProject\\Models\\VwIlanDetay.cs",
+              "RelativeDocumentMoniker": "TermProject\\Models\\VwIlanDetay.cs",
+              "ToolTip": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\TermProject\\TermProject\\Models\\VwIlanDetay.cs",
+              "RelativeToolTip": "TermProject\\Models\\VwIlanDetay.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T10:36:26.991Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_ResultCard.cshtml",
+              "DocumentMoniker": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\TermProject\\TermProject\\Views\\Average\\_ResultCard.cshtml",
+              "RelativeDocumentMoniker": "TermProject\\Views\\Average\\_ResultCard.cshtml",
+              "ToolTip": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\TermProject\\TermProject\\Views\\Average\\_ResultCard.cshtml",
+              "RelativeToolTip": "TermProject\\Views\\Average\\_ResultCard.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-23T10:33:14.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_FilterForm.cshtml",
+              "DocumentMoniker": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\TermProject\\TermProject\\Views\\Average\\_FilterForm.cshtml",
+              "RelativeDocumentMoniker": "TermProject\\Views\\Average\\_FilterForm.cshtml",
+              "ToolTip": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\TermProject\\TermProject\\Views\\Average\\_FilterForm.cshtml",
+              "RelativeToolTip": "TermProject\\Views\\Average\\_FilterForm.cshtml",
+              "ViewState": "AgIAAKUAAAAAAAAAAAAmwMIAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-23T10:15:17.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FiyatTahmin.cs",
+              "DocumentMoniker": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\TermProject\\TermProject\\Models\\FiyatTahmin.cs",
+              "RelativeDocumentMoniker": "TermProject\\Models\\FiyatTahmin.cs",
+              "ToolTip": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\TermProject\\TermProject\\Models\\FiyatTahmin.cs",
+              "RelativeToolTip": "TermProject\\Models\\FiyatTahmin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T10:14:50.795Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\TermProject\\TermProject\\Views\\Average\\Index.cshtml",
+              "RelativeDocumentMoniker": "TermProject\\Views\\Average\\Index.cshtml",
+              "ToolTip": "C:\\Users\\adnan\\Desktop\\OrtakProje\\Web\\TermProject\\TermProject\\Views\\Average\\Index.cshtml",
+              "RelativeToolTip": "TermProject\\Views\\Average\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-23T10:13:52.56Z",
               "EditorCaption": ""
             }
           ]

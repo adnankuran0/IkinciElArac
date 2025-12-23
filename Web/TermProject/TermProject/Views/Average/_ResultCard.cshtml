@@ -6,3 +6,25 @@
         </div>
     </div>
 </div>
+<script>
+document.addEventListener('priceResult', e => {
+    const d = e.detail;
+
+    const priceTl = Math.round(d.tahmin_tl).toLocaleString('tr-TR');
+
+    document.getElementById('resultCard').innerHTML = `
+        <div class="card shadow-lg h-100">
+            <div class="card-body text-center">
+                <h6 class="text-muted">Tahmini Fiyat</h6>
+                <h1 class="fw-bold text-success">
+                    ${priceTl} ₺
+                </h1>
+                <small class="text-muted">
+                    ${Math.round(d.tahmin_eur).toLocaleString('tr-TR')} € /
+                    ${Math.round(d.tahmin_usd).toLocaleString('tr-TR')} $
+                </small>
+            </div>
+        </div>
+    `;
+});
+</script>
