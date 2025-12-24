@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="VehicleService"
+             targetNamespace="http://localhost:3000/soap/vehicle"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://localhost:3000/soap/vehicle"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Type Definitions -->
+    <types>
+        <xsd:schema targetNamespace="http://localhost:3000/soap/vehicle">
+            
+            <!-- Vehicle Info Request -->
+            <xsd:element name="GetVehicleInfoRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="arac_id" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <!-- Vehicle Info Response -->
+            <xsd:element name="GetVehicleInfoResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="success" type="xsd:boolean"/>
+                        <xsd:element name="arac_id" type="xsd:int"/>
+                        <xsd:element name="marka" type="xsd:string"/>
+                        <xsd:element name="model" type="xsd:string"/>
+                        <xsd:element name="yil" type="xsd:int"/>
+                        <xsd:element name="fiyat" type="xsd:double"/>
+                        <xsd:element name="mesaj" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <!-- Price Calculation Request -->
+            <xsd:element name="CalculatePriceRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="marka_id" type="xsd:int"/>
+                        <xsd:element name="seri_id" type="xsd:int"/>
+                        <xsd:element name="model_id" type="xsd:int"/>
+                        <xsd:element name="yil" type="xsd:int"/>
+                        <xsd:element name="kilometre" type="xsd:int"/>
+                        <xsd:element name="vites_tipi_id" type="xsd:int"/>
+                        <xsd:element name="yakit_tipi_id" type="xsd:int"/>
+                        <xsd:element name="motor_hacmi" type="xsd:int"/>
+                        <xsd:element name="motor_gucu" type="xsd:int"/>
+                        <xsd:element name="hasar_durumu" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <!-- Price Calculation Response -->
+            <xsd:element name="CalculatePriceResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="success" type="xsd:boolean"/>
+                        <xsd:element name="tahmin_tl" type="xsd:string"/>
+                        <xsd:element name="tahmin_eur" type="xsd:string"/>
+                        <xsd:element name="tahmin_usd" type="xsd:string"/>
+                        <xsd:element name="mesaj" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+        </xsd:schema>
+    </types>
+
+    <!-- Messages -->
+    <message name="GetVehicleInfoInput">
+        <part name="parameters" element="tns:GetVehicleInfoRequest"/>
+    </message>
+    <message name="GetVehicleInfoOutput">
+        <part name="parameters" element="tns:GetVehicleInfoResponse"/>
+    </message>
+
+    <message name="CalculatePriceInput">
+        <part name="parameters" element="tns:CalculatePriceRequest"/>
+    </message>
+    <message name="CalculatePriceOutput">
+        <part name="parameters" element="tns:CalculatePriceResponse"/>
+    </message>
+
+    <!-- Port Type -->
+    <portType name="VehicleServicePortType">
+        <operation name="GetVehicleInfo">
+            <input message="tns:GetVehicleInfoInput"/>
+            <output message="tns:GetVehicleInfoOutput"/>
+        </operation>
+        <operation name="CalculatePrice">
+            <input message="tns:CalculatePriceInput"/>
+            <output message="tns:CalculatePriceOutput"/>
+        </operation>
+    </portType>
+
+    <!-- Binding -->
+    <binding name="VehicleServiceBinding" type="tns:VehicleServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        
+        <operation name="GetVehicleInfo">
+            <soap:operation soapAction="GetVehicleInfo"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="CalculatePrice">
+            <soap:operation soapAction="CalculatePrice"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <!-- Service -->
+    <service name="VehicleService">
+        <documentation>SOAP Web Service for Vehicle Information and Price Calculation</documentation>
+        <port name="VehicleServicePort" binding="tns:VehicleServiceBinding">
+            <soap:address location="http://localhost:3000/soap/vehicle"/>
+        </port>
+    </service>
+
+</definitions>
